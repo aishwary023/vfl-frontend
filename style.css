@@ -1,0 +1,19 @@
+:root{
+    --primary-color:#05386b;
+}
+
+.is-primary{
+    background-color: var(--primary-color)!important;
+}
+
+.button.is-outlined{
+    background-color: transparent!important;
+    border-color: var(--primary-color)!important;
+    color: var(--primary-color)!important;
+}
+
+.button.is-outlined:hover{
+    background-color: #dbdbdb!important;
+    border-color: var(--primary-color)!important;
+    color: var(--primary-color)!important;
+}
