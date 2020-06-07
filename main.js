@@ -29,7 +29,6 @@ function displayInfoToast(message) {
         message: message
     });
 }
-
 const API_BASE_URL = 'https://backend-vfl.herokuapp.com/';
 
 function login() {
