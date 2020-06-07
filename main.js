@@ -29,6 +29,7 @@ function displayInfoToast(message) {
         message: message
     });
 }
+
 const API_BASE_URL = 'https://backend-vfl.herokuapp.com/';
 
 function login() {
@@ -103,7 +104,7 @@ function register() {
             data: dataForApiRequest,
             success: function (data, status, xhr) {
                 localStorage.setItem('token', data.token);
-                window.location.href = '/loggedin';
+                window.location.href = '/dashboard/index.html';
             },
             error: function (xhr, status, err) {
                 displayErrorToast('An account using same email or username is already created');

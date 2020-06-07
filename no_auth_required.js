@@ -1,3 +1,3 @@
 if (localStorage.getItem('token')) {
-    window.location.href = '/'
+    window.location.href = '/dashboard'
 }
