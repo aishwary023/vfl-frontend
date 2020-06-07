@@ -30,7 +30,7 @@ function displayInfoToast(message) {
     });
 }
 
-const API_BASE_URL = 'https://backend-vfl.herokuapp.com/';
+const API_BASE_URL = 'http://127.0.0.1:8000/';
 
 function login() {
 
@@ -39,7 +39,7 @@ function login() {
 
     const password = document.getElementById("inputPassword").value;
 
-    if (username.length > 0 && password.length > 0) {
+    if (username.length > 0 && password.length > 0 && password.trim() !== "") {
         const dataForApiRequest = {
             username: username,
             password: password
@@ -51,7 +51,7 @@ function login() {
             data: dataForApiRequest,
             success: function (data, status, xhr) {
                 localStorage.setItem('token', data.token);
-                window.location.href = '/loggedin';
+                window.location.href = '/dashboard/index.html';
 
             },
             error: function (xhr, status, err) {
@@ -111,4 +111,42 @@ function register() {
             }
         })
     }
+}
+
+$(function () {
+    $("#tags").autocomplete({
+        source: availableTags
+    });
+});
+
+function search() {
+
+    for (var i = 0; i < 21; i++) {
+        var $newstr = $(' <div class="column is-4"> <div class="card"> <div class="card-content"> <div class="media"> <div class="media-left"> <figure class="image is-48x48"> <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> </figure> </div> <div class="media-content"> <p class="title is-4">Business-Name</p> </div> </div> <div class="content contentCard"> details - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <br> <hr> <p>City and address</p> </div> </div> </div> </div>')
+
+        $("#searchResult").append($newstr)
+    }
+
+    var my_element = document.getElementById("searchResult");
+    my_element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+    });
+    console.log("clicked")
+}
+
+function productDetail(id) {
+    console.log("CLICKED", id)
+
+    $.ajax({
+        url: API_BASE_URL + 'vendor/' + id + '/',
+        method: "GET",
+        success: function (data, status, xhr) {
+            console.log(data.products)
+        },
+        error: function (xhr, status, err) {
+            console.log(err, "ERROR")
+        }
+    })
 }

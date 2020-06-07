@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
 
 <head>
     <title>Vocal For Local</title>
@@ -9,15 +9,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <meta charset=utf-8>
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
     <script src="../no_auth_required.js"></script>
     <script src="main.js"></script>
+    <script src="./cities.js"></script>
     <style>
         .hideme {
             display: none !important;
@@ -28,7 +32,7 @@
 <body>
     <!-- navbar begins -->
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="#">
                 <img src="./img/logo.png">
@@ -48,7 +52,7 @@
 
 
             <div class="navbar-start">
-                <a class="navbar-item" href="#">
+                <a class="navbar-item active" href="#">
                     Home
                 </a>
 
@@ -65,7 +69,12 @@
 
             <div class="navbar-end">
                 <div class="navbar-item">
+                    <h2 class="subtitle">Are you a vendor?</h2 class="title">
+                </div>
+                <div class="navbar-item">
+
                     <div class="buttons">
+
                         <a class="button is-primary" href="/register">
                             <strong>Register</strong>
                         </a>
@@ -83,13 +92,105 @@
     <!-- header begins -->
 
     <header>
+        <div class="container hero-body" style="margin-top: 30px; padding-bottom: 2rem;">
+            <div class="field has-addons">
+
+                <p class="control">
+                    <input id="tags" class="input" type="text" placeholder="city">
+                </p>
+
+
+                <p class="control is-expanded">
+                    <input class="input" type="text" placeholder="Enter you search keyword!">
+                </p>
+
+                <p class="control">
+                    <button class="button" id="searchBtn" onclick="search()">
+                        Search
+                    </button>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="columns is-vcentered">
+                <div class="column ">
+                    <section class="hero">
+                        <div class="hero-body">
+                            <div class="container">
+                                <h1 class="title">
+                                    Vocal For Local?
+                                </h1>
+
+                                <h2 class="subtitle">
+                                    Search local vendors. Register your business.
+                                </h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="column">
+                    <section class="hero">
+                        <div class="hero-body">
+                            <div class="container">
+                                <h1 class="title">
+                                    this website
+                                </h1>
+                                <hr style="background-color: #00D1B3;">
+                                <h2 class="subtitle">
+                                    A platform for local vendors who do not have the means to advertize themselves or
+                                    even have their own shop. Easily search for products you need and contact the vendor
+                                    directly! If you are a vendor, register yourself and add your products!
+                                </h2>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- header ends -->
     <!-- content begins -->
 
-    <div class="content">
+    <div class="content container">
+        <div class="columns is-multiline" id="searchResult">
+
+            <div class="column is-4">
+                <div class="card">
+                    <a onclick="productDetail(id)" id="1">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                            alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">Business-Name</p>
+
+                                </div>
+                            </div>
+
+                            <div class="content contentCard">
+                                details - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris.
+                                <br>
+                                <hr>
+                                <p>City and address</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
+
 
     <!-- content ends -->
     <!-- footer begins -->
