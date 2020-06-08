@@ -30,7 +30,7 @@ function displayInfoToast(message) {
     });
 }
 
-const API_BASE_URL = 'http://backend-vfl.herokuapp.com/';
+const API_BASE_URL = 'https://backend-vfl.herokuapp.com/';
 
 function login() {
 
@@ -158,8 +158,6 @@ window.onload = function () {
             search()
     })
 }
-
-
 
 function search() {
     const city = document.getElementById("tags").value
