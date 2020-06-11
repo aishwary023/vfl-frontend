@@ -1,81 +1,105 @@
-:root{
-    --primary-color:#05386b;
-    --green:#00D1B3;
+:root {
+  --primary-color: #05386b;
+  --green: #00d1b3;
 }
-body{
+body {
 }
-.is-primary{
-    background-color: var(--primary-color)!important;
-}
-
-.button.is-outlined{
-    background-color: transparent!important;
-    border-color: var(--primary-color)!important;
-    color: var(--primary-color)!important;
+.is-primary {
+  background-color: var(--primary-color) !important;
 }
 
-.button.is-outlined:hover{
-    background-color: #dbdbdb!important;
-    border-color: var(--primary-color)!important;
-    color: var(--primary-color)!important;
+.button.is-outlined {
+  background-color: transparent !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.button.is-outlined:hover {
+  background-color: #dbdbdb !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
 }
 
 header {
-   min-height: 300px;
- 
+  min-height: 300px;
 }
 
 .typewriter h1 {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    animation: 
-      typing 3.5s steps(40, end),
-      blink-caret .75s step-end infinite;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
   }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+  to {
+    width: 100%;
   }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
   }
-
-  .input,.control>.button{
-    border-color: var(--green)!important ;
-}
-hr{
-    background-color: var(--green)!important;
+  50% {
+    border-color: orange;
+  }
 }
 
-.card{
-    margin: 15px 15px;
+.input,
+.control > .button {
+  border-color: var(--green) !important ;
+}
+hr {
+  background-color: var(--green) !important;
 }
 
-.contentCard,.subtitle,.navbar-item{
-    color: #05386b!important;
+.card {
+  margin: 15px 15px;
 }
 
-.active{
-    background-color: #f5f5f5;
-}
-.hero-body{
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+.contentCard,
+.subtitle,
+.navbar-item {
+  color: #05386b !important;
 }
 
-nav{
-    border-bottom: 1px ridge;
+.active {
+  background-color: #f5f5f5;
+}
+.hero-body {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
-.column.is-3.is-offset-2{
-    margin-top: 10px;
-    margin-bottom: 20px;
+nav {
+  border-bottom: 1px ridge;
+}
+
+.column.is-3.is-offset-2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.main {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 60px;
+  padding-top: 10px;
+  width: 100%;
+  background: #f5f5f5;
+}
+
+footer {
+  height: 60px;
+  padding-top: 10px;
+  background: #f5f5f5;
 }
