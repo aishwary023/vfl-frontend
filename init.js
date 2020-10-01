@@ -37,8 +37,6 @@ $.ajax({
     url: API_BASE_URL + 'auth/profile/',
     method: 'GET',
     success: function (data, status, xhr) {
-        console.log(data)
-
         document.getElementById("name-parent").innerHTML = ' <img id="profile-img" src="" alt="" srcset="">' + '&nbsp;' + data.name + ''
         document.getElementById("profile-img").src = 'https://ui-avatars.com/api/?rounded=true&name=' + data.name + '&background=00D1B3&size=33&color=00000'
     }
