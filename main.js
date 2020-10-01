@@ -223,6 +223,24 @@ function productDetail(id) {
   });
 }
 
+var oldName;
+var oldPhone;
+var oldProducts;
+var oldAddress;
+var oldCity;
+var oldPincode;
+var oldDetails;
+
+var oldData = {
+  name: '',
+  phone: '',
+  products: '',
+  address: '',
+  city: '',
+  pincode: '',
+  details: ''
+};
+
 function editBussiness(id) {
   document.getElementById('editBtn' + id).classList.add('hideme');
   document.getElementById('updateBtn' + id).classList.remove('hideme');
@@ -234,6 +252,25 @@ function editBussiness(id) {
   document.getElementById('city' + id).removeAttribute('disabled');
   document.getElementById('pincode' + id).removeAttribute('disabled');
   document.getElementById('details' + id).removeAttribute('disabled');
+  oldName = document.getElementById('name' + id).value;
+  oldPhone = document.getElementById('phone' + id).value;
+  oldProducts = document.getElementById('products' + id).value;
+  oldAddress = document.getElementById('address' + id).value;
+  oldCity = document.getElementById('city' + id).value;
+  oldPincode = document.getElementById('pincode' + id).value;
+  oldDetails = document.getElementById('details' + id).value;
+
+  oldData = {
+    name: oldName,
+    phone: oldPhone,
+    products: oldProducts,
+    address: oldAddress,
+    city: oldCity,
+    pincode: oldPincode,
+    details: oldDetails
+  };
+
+  console.log(oldData);
 }
 
 function updateBussiness(id) {
@@ -255,28 +292,43 @@ function updateBussiness(id) {
     details: newDetails
   };
 
-  $.ajax({
-    headers: {
-      Authorization: 'Token ' + localStorage.getItem('token')
-    },
-    url: API_BASE_URL + 'vendor/' + id + '/',
-    method: 'PATCH',
-    data: dataForApiRequest,
-    success: function (data, status, xhr) {
-      document.getElementById('editBtn' + id).classList.remove('hideme');
-      document.getElementById('updateBtn' + id).classList.add('hideme');
-      document.getElementById('name' + id).setAttribute('disabled', '');
-      document.getElementById('phone' + id).setAttribute('disabled', '');
-      document.getElementById('products' + id).setAttribute('disabled', '');
-      document.getElementById('address' + id).setAttribute('disabled', '');
-      document.getElementById('city' + id).setAttribute('disabled', '');
-      document.getElementById('pincode' + id).setAttribute('disabled', '');
-      document.getElementById('details' + id).setAttribute('disabled', '');
-    },
-    error: function (xhr, status, err) {
-      displayErrorToast('Not successfull, try again!');
-    }
-  });
+  if(JSON.stringify(dataForApiRequest)===JSON.stringify(oldData)){
+    document.getElementById('editBtn' + id).classList.remove('hideme');
+    document.getElementById('updateBtn' + id).classList.add('hideme');
+    document.getElementById('name' + id).setAttribute('disabled', '');
+    document.getElementById('phone' + id).setAttribute('disabled', '');
+    document.getElementById('products' + id).setAttribute('disabled', '');
+    document.getElementById('address' + id).setAttribute('disabled', '');
+    document.getElementById('city' + id).setAttribute('disabled', '');
+    document.getElementById('pincode' + id).setAttribute('disabled', '');
+    document.getElementById('details' + id).setAttribute('disabled', '');
+    displaySuccessToast("Updated successfully!");
+  }
+  else{
+    $.ajax({
+      headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      },
+      url: API_BASE_URL + 'vendor/' + id + '/',
+      method: 'PATCH',
+      data: dataForApiRequest,
+      success: function (data, status, xhr) {
+        document.getElementById('editBtn' + id).classList.remove('hideme');
+        document.getElementById('updateBtn' + id).classList.add('hideme');
+        document.getElementById('name' + id).setAttribute('disabled', '');
+        document.getElementById('phone' + id).setAttribute('disabled', '');
+        document.getElementById('products' + id).setAttribute('disabled', '');
+        document.getElementById('address' + id).setAttribute('disabled', '');
+        document.getElementById('city' + id).setAttribute('disabled', '');
+        document.getElementById('pincode' + id).setAttribute('disabled', '');
+        document.getElementById('details' + id).setAttribute('disabled', '');
+        displaySuccessToast("Updated successfully!");
+      },
+      error: function (xhr, status, err) {
+        displayErrorToast('Not successfull, try again!');
+      }
+    });
+  }
 }
 
 function formFieldsAreValid(
