@@ -158,8 +158,6 @@ function search() {
   const products = document.getElementById('productsText').value;
 
   if (searchFieldsAreValid(city, products)) {
-    document.getElementById('searchParent').innerHTML =
-      '<div class="columns is-multiline" id="searchResult"></div>';
     // setTimeout(() => { console.log("delay!"); }, 200);
 
     $.ajax({
@@ -169,6 +167,15 @@ function search() {
         document.getElementById('footerMain').classList.remove('main');
         document.getElementById('searchBtn').classList.add('is-outlined');
         document.getElementById('searchBtn').classList.remove('is-loading');
+
+        if(data.length == 0){
+          document.getElementById('searchParent').innerHTML ='';
+          displayErrorToast('No result found!');
+        }
+        else{
+          document.getElementById('searchParent').innerHTML =
+          '<h1 class="title is-4">Search results</h1><div class="columns is-multiline" id="searchResult"></div>';
+        }
 
         for (var i = 0; i < data.length; i++) {
           var $newstr = $(
@@ -186,8 +193,16 @@ function search() {
               data[i].phone +
               '</a></span> </div> </div> </div> </div>'
           );
-
           $('#searchResult').append($newstr);
+        }
+
+        if(data.length != 0){
+          var my_element = document.getElementById('searchResult');
+          my_element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+          });
         }
       },
       error: function (xhr, data, err) {
@@ -195,14 +210,6 @@ function search() {
         displayErrorToast('No result found! Search with different keywords!');
       }
     });
-
-    var my_element = document.getElementById('searchResult');
-    my_element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest'
-    });
-    console.log('clicked');
     document.getElementById('searchBtn').classList.remove('is-outlined');
     document.getElementById('searchBtn').classList.add('is-loading');
   }
